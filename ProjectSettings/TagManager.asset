@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - player
+  - StealthObject
+  - beaten
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - ground
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: back-far
+    uniqueID: 3280346125
+    locked: 0
+  - name: back
+    uniqueID: 3156908875
+    locked: 0
+  - name: houses
+    uniqueID: 3447838455
+    locked: 0
+  - name: close_back
+    uniqueID: 723148659
+    locked: 0
+  - name: Fore
+    uniqueID: 530714269
+    locked: 0
+  - name: stealth
+    uniqueID: 2163047569
+    locked: 0
+  - name: foreground
+    uniqueID: 237098209
+    locked: 0
