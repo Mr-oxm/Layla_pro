@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Inner legs
+    m_Hash: 1377620153
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: lef_2_2
+      m_Hash: -565912582
+      m_Sprite: {fileID: -8293982319737039235, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8293982319737039235, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    - m_Name: leg_0_2
+      m_Hash: -526375388
+      m_Sprite: {fileID: -6376433003577104106, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6376433003577104106, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    - m_Name: leg_1_2
+      m_Hash: -513651693
+      m_Sprite: {fileID: -8615297631953481404, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8615297631953481404, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    - m_Name: leg_3_2
+      m_Hash: -488204163
+      m_Sprite: {fileID: 7287782682363759045, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7287782682363759045, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 

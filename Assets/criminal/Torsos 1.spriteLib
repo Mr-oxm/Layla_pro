@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Torso
+    m_Hash: -425815167
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: torso_0
+      m_Hash: -570370242
+      m_Sprite: {fileID: 676895533079651685, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 676895533079651685, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    - m_Name: Torso_1.svg
+      m_Hash: -553120256
+      m_Sprite: {fileID: -4255997671703277870, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -4255997671703277870, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    - m_Name: Torso_2
+      m_Hash: -21786738
+      m_Sprite: {fileID: -1254983116326610181, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1254983116326610181, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    - m_Name: Torso_3
+      m_Hash: -2001420520
+      m_Sprite: {fileID: 3600463623561094622, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 3600463623561094622, guid: a436142103f3f2c48922da997f6850e9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
