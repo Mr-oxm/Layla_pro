@@ -40,6 +40,7 @@ public class Conversation : MonoBehaviour
 
         // All sounds have played, it is finished
         isFinished = true;
+        FindObjectOfType<Player>().disableRunTo();
         
     }
 

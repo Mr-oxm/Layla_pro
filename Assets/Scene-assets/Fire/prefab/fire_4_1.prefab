@@ -4823,6 +4823,7 @@ GameObject:
   - component: {fileID: 820113006399337689}
   - component: {fileID: 820113006399337695}
   - component: {fileID: 820113006399337688}
+  - component: {fileID: 8815463490130124091}
   m_Layer: 0
   m_Name: fire_4_1
   m_TagString: Untagged
@@ -4919,6 +4920,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8815463490130124091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820113006399337690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab077173a2d8ca42a959472137b15f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  brightness: 1
+  brightnessMin: 0.85
 --- !u!1 &820113007537746564
 GameObject:
   m_ObjectHideFlags: 0

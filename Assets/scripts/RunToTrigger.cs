@@ -20,7 +20,8 @@ public class RunToTrigger : MonoBehaviour
                 float audioLength = sound.clip.length;
                 // Get the position of the target GameObject
                 Vector2 targetPosition = targetObject.transform.position;
-
+                
+                FindObjectOfType<Player>().stopPlayer();
                 // Call the RunTo function in the player script
                 FindObjectOfType<Player>().RunTo(targetPosition);
 

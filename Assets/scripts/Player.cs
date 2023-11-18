@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed;
+    private float moveSpeed;
+    public float runningSpeed;
+    public float normalSpeed;
+
     public float jumpHeight;
     public bool isFacingRight;
     public KeyCode Spacebar;
@@ -24,6 +27,8 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
+    private Rigidbody2D playerRigidbody;
+
 
     //stealth 
     public GameObject stealthObject;
@@ -35,6 +40,7 @@ public class Player : MonoBehaviour
     private bool isColidingWithStealth = false;
     private bool isAutoWalk = true;
     private bool isChecking = false;
+    private bool isRuningTo = false;
 
 
     //sound effects
@@ -50,13 +56,16 @@ public class Player : MonoBehaviour
 
     //combat
     public KeyCode hit;
-    private bool isHitting = false;
+    public bool isHitting = false;
+    public float hittingDuration=5;
 
     // Start is called before the first frame update
     void Start()
     {
         isFacingRight = true;
         anim = GetComponent<Animator>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        moveSpeed = normalSpeed;
     }
 
     // Update is called once per frame
@@ -68,24 +77,32 @@ public class Player : MonoBehaviour
         anim.SetBool("stealth", isInStealthMode);
         anim.SetBool("crouch", isInCrouchMode);
         anim.SetBool("Check", isChecking);
+        anim.SetBool("hit", isHitting);
+
+
         if (isAutoWalk)
         {
             autoWalk();
         }
 
-        if (!isChecking && !isAutoWalk)
+        if(isHitting){
+            Invoke("disableHitting", hittingDuration);
+        }
+
+        
+        if (!isChecking && !isAutoWalk && !isRuningTo)
         {
 
             // Check if the Shift key is pressed
             if (Input.GetKeyDown(Sprint))
             {
-                // Double the player's speed
-                moveSpeed *= 2f;
+                // change the player's speed
+                moveSpeed = runningSpeed;
             }
             if (Input.GetKeyUp(Sprint))
             {
                 // Reset the player's speed to the original value
-                moveSpeed /= 2f;
+                moveSpeed = normalSpeed;
 
                 sprintSound.Stop();
             }
@@ -201,7 +218,7 @@ public class Player : MonoBehaviour
                     // Calculate the closest edge of the stealthObject based on its width
                     float stealthObjectWidth = stealthObject.GetComponent<SpriteRenderer>().bounds.size.x;
                     float closestEdgeX = Mathf.Clamp(transform.position.x, stealthObject.transform.position.x - stealthObjectWidth / 2f,
-                                                     stealthObject.transform.position.x + stealthObjectWidth / 2f);
+                    stealthObject.transform.position.x + stealthObjectWidth / 2f);
 
                     // Move the player to the closest edge
                     transform.position = new Vector3(closestEdgeX, transform.position.y, transform.position.z);
@@ -213,14 +230,18 @@ public class Player : MonoBehaviour
 
                 }
             }
+
+            //Enable hitting
+            if (Input.GetKeyDown(hit) && ShowKnife)
+            {
+                enableHitting();
+            }
         }
     }
 
     void autoWalk()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
-        anim.SetFloat("Speed", moveSpeed);
-        anim.SetBool("Grounded", grounded);
         if (!hasPlayedWalkSound)
         {
             walkSound.Play();
@@ -288,6 +309,7 @@ public class Player : MonoBehaviour
 
     public void RunTo(Vector2 targetPosition)
     {
+        isRuningTo = true;
         // Calculate the direction to the target position
         Vector2 direction = targetPosition - (Vector2)transform.position;
 
@@ -296,9 +318,18 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x, GetComponent<Rigidbody2D>().velocity.y);
 
         // Update the animation parameters
-        anim.SetFloat("Speed", moveSpeed);
+        anim.SetFloat("Speed", runningSpeed);
         anim.SetBool("Grounded", grounded);
+        
 
+    }
+    public void stopPlayer()
+    {
+        playerRigidbody.velocity = Vector2.zero;
+    }
+    public void disableRunTo()
+    {
+        isRuningTo = false;
     }
 
     public bool isInStealth()
@@ -322,4 +353,12 @@ public class Player : MonoBehaviour
 
         isChecking = false;
     }
+
+    void enableHitting(){
+        isHitting=true;
+    }
+    void disableHitting(){
+        isHitting=false;
+    }
+
 }
