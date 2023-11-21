@@ -19,6 +19,6 @@ public class LevelManager : MonoBehaviour
     public void RespawnPlayer()
     {
         FindObjectOfType<Player>().transform.position = CurrentCheckpoint.transform.position;
-        
+        FindObjectOfType<EnemyAI>().RespawnEnemy();
     }
 }

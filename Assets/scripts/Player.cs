@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float moveSpeed;
+    public float moveSpeed;
     public float runningSpeed;
     public float normalSpeed;
 
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     private bool isAutoWalk = true;
     private bool isChecking = false;
     private bool isRuningTo = false;
+    private bool isStabbed = false;
 
 
     //sound effects
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
 
     //knife
     public bool ShowKnife = false;
+    public bool ShowStabingKnife = false;
 
     //combat
     public KeyCode hit;
@@ -69,7 +71,38 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update(){
+    
+        UpdateAnimations();
+
+        if (isAutoWalk)
+        {
+            AutoWalk();
+        }
+
+        if (isHitting)
+        {
+            HandleHitting();
+        }
+
+        if (isStabbed)
+        {
+            // Handle stabbed logic if needed
+        }
+        
+        if (!isChecking && !isAutoWalk && !isRuningTo && !isStabbed)
+        {
+            HandleSprint();
+            HandleCrouch();
+            HandleJump();
+            HandleMovement();
+            HandleSoundEffects();
+            HandleStealth();
+            HandleHittingInput();
+        }
+    }
+
+    void UpdateAnimations()
     {
         //animation
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
@@ -78,176 +111,195 @@ public class Player : MonoBehaviour
         anim.SetBool("crouch", isInCrouchMode);
         anim.SetBool("Check", isChecking);
         anim.SetBool("hit", isHitting);
-
-
-        if (isAutoWalk)
-        {
-            autoWalk();
-        }
-
-        if(isHitting){
-            Invoke("disableHitting", hittingDuration);
-        }
-
-        
-        if (!isChecking && !isAutoWalk && !isRuningTo)
-        {
-
-            // Check if the Shift key is pressed
-            if (Input.GetKeyDown(Sprint))
-            {
-                // change the player's speed
-                moveSpeed = runningSpeed;
-            }
-            if (Input.GetKeyUp(Sprint))
-            {
-                // Reset the player's speed to the original value
-                moveSpeed = normalSpeed;
-
-                sprintSound.Stop();
-            }
-
-            // Check if the crouch key is pressed
-            if (Input.GetKey(Crouch) && (Input.GetKey(R) || Input.GetKey(L)) && Input.GetKey(Sprint))
-            {
-                isInCrouchMode = true;
-                sprintSound.Stop();
-            }
-            if (Input.GetKeyUp(Crouch))
-            {
-                isInCrouchMode = false;
-
-                crouchSound.Stop();
-            }
-            if (Input.GetKeyDown(Crouch))
-            {
-                crouchSound.Play();
-            }
-
-
-            //jump
-            if (Input.GetKeyDown(Spacebar) && grounded)
-            {
-                jumpSound.Play();
-                Jump();
-            }
-
-            //moving left
-            if (Input.GetKey(L))
-            {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
-                if (isFacingRight)
-                {
-                    flip();
-                    isFacingRight = false;
-                }
-
-            }
-
-            //moving right
-            if (Input.GetKey(R))
-            {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
-                if (!isFacingRight)
-                {
-                    flip();
-                    isFacingRight = true;
-
-                }
-
-            }
-
-            // walking sound effects logic
-            if ((Input.GetKeyDown(R) || Input.GetKeyDown(L)) || ((Input.GetKey(R) || Input.GetKey(L)) && Input.GetKeyUp(Sprint)))
-            {
-                walkSound.Play();
-            }
-            if ((Input.GetKey(R) || Input.GetKey(L)) && Input.GetKeyDown(Sprint))
-            {
-                sprintSound.Play();
-            }
-            if ((Input.GetKeyUp(R) && !Input.GetKey(L)) || (Input.GetKeyUp(L) && !Input.GetKey(R)) || Input.GetKeyDown(Sprint))
-            {
-                walkSound.Stop();
-            }
-            
-
-            //stealth logic
-            if (isInStealthMode)
-            {
-
-                // Calculate the boundaries of the stealthObject based on its width
-                float stealthObjectWidth = stealthObject.GetComponent<SpriteRenderer>().bounds.size.x;
-                float leftBoundary = stealthObject.transform.position.x - stealthObjectWidth / 2f;
-                float rightBoundary = stealthObject.transform.position.x + stealthObjectWidth / 2f;
-
-                // Clamp the player's X position within the boundaries of the stealthObject
-                transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftBoundary, rightBoundary), transform.position.y, transform.position.z);
-
-                // Stop walking animation when reaching boundaries
-                if (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary)
-                {
-                    anim.SetFloat("Speed", 0f); // Set the Speed parameter to 0 to stop the walking animation
-                }
-                else
-                {
-                    anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
-                }
-
-                // Exit stealth mode and return to "fore" sorting layer when the stealth key is pressed, Move left
-                if (Input.GetKey(stealthKey) && Input.GetKey(L) && isColidingWithStealth)
-                {
-                    transform.Translate(Vector2.left * Time.deltaTime);
-                    SetSortingLayer("Fore");
-                    isInStealthMode = false;
-
-                }
-                // Exit stealth mode and return to "fore" sorting layer when the stealth key is pressed, Move right
-                if (Input.GetKey(stealthKey) && Input.GetKey(R) && isColidingWithStealth)
-                {
-                    transform.Translate(Vector2.right * Time.deltaTime);
-                    SetSortingLayer("Fore");
-                    isInStealthMode = false;
-                }
-            }
-            else
-            {
-                // Enter stealth mode upon collision with StealthObject
-                if (Input.GetKeyDown(stealthKey) && isColidingWithStealth)
-                {
-                    // Calculate the closest edge of the stealthObject based on its width
-                    float stealthObjectWidth = stealthObject.GetComponent<SpriteRenderer>().bounds.size.x;
-                    float closestEdgeX = Mathf.Clamp(transform.position.x, stealthObject.transform.position.x - stealthObjectWidth / 2f,
-                    stealthObject.transform.position.x + stealthObjectWidth / 2f);
-
-                    // Move the player to the closest edge
-                    transform.position = new Vector3(closestEdgeX, transform.position.y, transform.position.z);
-
-                    // Enter stealth mode and take a step inside
-                    SetSortingLayer("stealth");
-                    transform.Translate(Vector2.right * Time.deltaTime); // Take a step inside
-                    isInStealthMode = true;
-
-                }
-            }
-
-            //Enable hitting
-            if (Input.GetKeyDown(hit) && ShowKnife)
-            {
-                enableHitting();
-            }
-        }
     }
 
-    void autoWalk()
+    void AutoWalk()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
         if (!hasPlayedWalkSound)
         {
             walkSound.Play();
             hasPlayedWalkSound = true;
         }
     }
+
+    void HandleHitting()
+    {
+        Invoke("disableHitting", hittingDuration);
+    }
+
+    void HandleSprint()
+    {
+        if (Input.GetKeyDown(Sprint))
+        {
+            moveSpeed = runningSpeed;
+        }
+
+        if (Input.GetKeyUp(Sprint))
+        {
+            moveSpeed = normalSpeed;
+            sprintSound.Stop();
+        }
+    }
+
+    void HandleCrouch()
+    {
+        if (Input.GetKey(Crouch) && (Input.GetKey(R) || Input.GetKey(L)) && Input.GetKey(Sprint))
+        {
+            isInCrouchMode = true;
+            sprintSound.Stop();
+        }
+
+        if (Input.GetKeyUp(Crouch))
+        {
+            isInCrouchMode = false;
+            crouchSound.Stop();
+        }
+
+        if (Input.GetKeyDown(Crouch))
+        {
+            crouchSound.Play();
+        }
+    }
+
+    void HandleJump()
+    {
+        if (Input.GetKeyDown(Spacebar) && grounded)
+        {
+            jumpSound.Play();
+            Jump();
+        }
+    }
+
+    void HandleMovement()
+    {
+        if (Input.GetKey(L))
+        {
+            MoveLeft();
+        }
+
+        if (Input.GetKey(R))
+        {
+            MoveRight();
+        }
+    }
+
+    void MoveLeft()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
+        if (isFacingRight)
+        {
+            flip();
+            isFacingRight = false;
+        }
+    }
+
+    void MoveRight()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
+        if (!isFacingRight)
+        {
+            flip();
+            isFacingRight = true;
+        }
+    }
+
+    void HandleSoundEffects()
+    {
+        // walking sound effects logic
+        if ((Input.GetKeyDown(R) || Input.GetKeyDown(L)) || ((Input.GetKey(R) || Input.GetKey(L)) && Input.GetKeyUp(Sprint)))
+        {
+            walkSound.Play();
+        }
+        if ((Input.GetKey(R) || Input.GetKey(L)) && Input.GetKeyDown(Sprint))
+        {
+            sprintSound.Play();
+        }
+        if ((Input.GetKeyUp(R) && !Input.GetKey(L)) || (Input.GetKeyUp(L) && !Input.GetKey(R)) || Input.GetKeyDown(Sprint))
+        {
+            walkSound.Stop();
+        }
+    }
+
+    void HandleStealth()
+    {
+        //stealth logic
+        if (isInStealthMode)
+        {
+
+            // Calculate the boundaries of the stealthObject based on its width
+            float stealthObjectWidth = stealthObject.GetComponent<SpriteRenderer>().bounds.size.x;
+            float leftBoundary = stealthObject.transform.position.x - stealthObjectWidth / 2f;
+            float rightBoundary = stealthObject.transform.position.x + stealthObjectWidth / 2f;
+
+            // Clamp the player's X position within the boundaries of the stealthObject
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftBoundary, rightBoundary), transform.position.y, transform.position.z);
+
+            // Stop walking animation when reaching boundaries
+            if (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary)
+            {
+                anim.SetFloat("Speed", 0f); // Set the Speed parameter to 0 to stop the walking animation
+            }
+            else
+            {
+                anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+            }
+
+            // Exit stealth mode and return to "fore" sorting layer when the stealth key is pressed, Move left
+            if (Input.GetKey(stealthKey) && Input.GetKey(L) && isColidingWithStealth)
+            {
+                transform.Translate(Vector2.left * Time.deltaTime);
+                SetSortingLayer("Fore");
+                isInStealthMode = false;
+
+            }
+            // Exit stealth mode and return to "fore" sorting layer when the stealth key is pressed, Move right
+            if (Input.GetKey(stealthKey) && Input.GetKey(R) && isColidingWithStealth)
+            {
+                transform.Translate(Vector2.right * Time.deltaTime);
+                SetSortingLayer("Fore");
+                isInStealthMode = false;
+            }
+        }
+        else
+        {
+            // Enter stealth mode upon collision with StealthObject
+            if (Input.GetKeyDown(stealthKey) && isColidingWithStealth)
+            {
+                // Calculate the closest edge of the stealthObject based on its width
+                float stealthObjectWidth = stealthObject.GetComponent<SpriteRenderer>().bounds.size.x;
+                float closestEdgeX = Mathf.Clamp(transform.position.x, stealthObject.transform.position.x - stealthObjectWidth / 2f,
+                stealthObject.transform.position.x + stealthObjectWidth / 2f);
+
+                // Move the player to the closest edge
+                transform.position = new Vector3(closestEdgeX, transform.position.y, transform.position.z);
+
+                // Enter stealth mode and take a step inside
+                SetSortingLayer("stealth");
+                transform.Translate(Vector2.right * Time.deltaTime); // Take a step inside
+                isInStealthMode = true;
+
+            }
+        }
+
+        //Enable hitting
+        if (Input.GetKeyDown(hit) && ShowKnife)
+        {
+            enableHitting();
+        }
+    }
+
+    void HandleHittingInput()
+    {
+        if (Input.GetKeyDown(hit) && ShowKnife)
+        {
+            enableHitting();
+        }
+    }
+
     public void disableAutoWalk()
     {
         walkSound.Stop();
@@ -327,6 +379,19 @@ public class Player : MonoBehaviour
     {
         playerRigidbody.velocity = Vector2.zero;
     }
+    public void stopPlayerPermanant()
+    {
+        // playerRigidbody.velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+
+        // Set the target velocity to zero
+        Vector2 targetVelocity = Vector2.zero;
+
+        // Linearly interpolate between the current velocity and the target velocity
+        playerRigidbody.velocity = Vector2.Lerp(playerRigidbody.velocity, targetVelocity, 0.001f);
+
+        moveSpeed=0;
+        isStabbed=true;
+    }
     public void disableRunTo()
     {
         isRuningTo = false;
@@ -361,4 +426,11 @@ public class Player : MonoBehaviour
         isHitting=false;
     }
 
+
+    public void getStapped(){
+        isInCrouchMode=true;
+        ShowKnife=false;
+        ShowStabingKnife=true;
+        
+    }
 }

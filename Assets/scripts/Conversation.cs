@@ -8,6 +8,8 @@ public class Conversation : MonoBehaviour
     private bool isFinished = false;
     public float totalDuration;
 
+    public bool InStelth=false;
+
     private void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -25,7 +27,8 @@ public class Conversation : MonoBehaviour
 
     private void PlaySoundsSequentially()
     {
-            StartCoroutine(PlaySoundsCoroutine());
+        isFinished=true;
+        StartCoroutine(PlaySoundsCoroutine());
     }
     private System.Collections.IEnumerator PlaySoundsCoroutine()
     {
@@ -50,8 +53,19 @@ public class Conversation : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Playing = true;
-            if (Playing && !isFinished)
+            if (Playing && !isFinished && !InStelth)
                 PlaySoundsSequentially();
+            else if(Playing && !isFinished && InStelth && FindObjectOfType<Player>().isInStealth()){
+                PlaySoundsSequentially();
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        // Check if the colliding object has the tag "Player"
+        if (other.CompareTag("Player") && !isFinished)
+        {
+            audioSource.Stop();
         }
     }
 

@@ -20,6 +20,11 @@ public class Obstacle : MonoBehaviour
         if (other.tag == "Player")
         {
             FindObjectOfType<LevelManager>().RespawnPlayer();
+            FindObjectOfType<EnemyAI>().RespawnEnemy();
+        }
+
+        if(other.tag == "RunningEnemy" && gameObject.tag == "Fire"){
+            FindObjectOfType<EnemyAI>().RespawnEnemy();
         }
     }
 }
