@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
     public KeyCode hit;
     public bool isHitting = false;
     public float hittingDuration=5;
+    public bool hasGun=false;
+    public GameObject bullet;
+    public Transform firepoint;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +92,8 @@ public class Player : MonoBehaviour
         {
             // Handle stabbed logic if needed
         }
+
+        
         
         if (!isChecking && !isAutoWalk && !isRuningTo && !isStabbed)
         {
@@ -111,6 +116,7 @@ public class Player : MonoBehaviour
         anim.SetBool("crouch", isInCrouchMode);
         anim.SetBool("Check", isChecking);
         anim.SetBool("hit", isHitting);
+        anim.SetBool("hasGun", hasGun);
     }
 
     void AutoWalk()
@@ -165,7 +171,7 @@ public class Player : MonoBehaviour
 
     void HandleJump()
     {
-        if (Input.GetKeyDown(Spacebar) && grounded)
+        if (Input.GetKeyDown(Spacebar) && grounded && !isInStealthMode)
         {
             jumpSound.Play();
             Jump();
@@ -420,6 +426,9 @@ public class Player : MonoBehaviour
     }
 
     void enableHitting(){
+        if(hasGun && !isHitting){
+            Shoot();
+        }
         isHitting=true;
     }
     void disableHitting(){
@@ -432,5 +441,9 @@ public class Player : MonoBehaviour
         ShowKnife=false;
         ShowStabingKnife=true;
         
+    }
+
+    void Shoot(){
+        Instantiate(bullet, firepoint.position, firepoint.rotation);
     }
 }
