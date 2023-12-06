@@ -291,16 +291,11 @@ public class Player : MonoBehaviour
             }
         }
 
-        //Enable hitting
-        if (Input.GetKeyDown(hit) && ShowKnife)
-        {
-            enableHitting();
-        }
     }
 
     void HandleHittingInput()
     {
-        if (Input.GetKeyDown(hit) && ShowKnife)
+        if (Input.GetKeyDown(hit) && ShowKnife && !isInStealthMode && grounded )
         {
             enableHitting();
         }

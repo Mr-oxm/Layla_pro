@@ -9,6 +9,7 @@ TagManager:
   - beaten
   - RunningEnemy
   - Fire
+  - Enemy
   layers:
   - Default
   - TransparentFX

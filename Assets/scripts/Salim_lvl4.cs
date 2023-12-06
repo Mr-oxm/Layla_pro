@@ -19,40 +19,57 @@ public class Salim_lvl4 : MonoBehaviour
 
     public Transform enemyVision; // Add a reference to the EnemyVision point
 
-    private bool autoWalk= false;
+    public bool autoWalk= false;
 
     public bool isHitting = false;
     public bool hasHit = false;
     public float hittingDuration=0.5f;
-    
+    public float hittingDelay=0.5f;
+    private bool dangerDetected=false;
 
-    //knife
+    //bullet
+    public GameObject bullet;
+    public Transform firepoint;
+
+    private float maxHealth=100;
+    private float currentHealth;
 
 
     void Start()
     {
         anim = GetComponent<Animator>();
         speed=NormalSpeed;
+        InvokeRepeating("ShootAtPlayer", 0f, hittingDelay);
+        currentHealth=maxHealth;
     }
 
 
-    private void Update()
+    void Update()
     {
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+        anim.SetBool("detected", dangerDetected);
+        anim.SetBool("hit", isHitting);
         
-        if(autoWalk){
-            if (DetectPlayer()&& !hasHit)
-            {
-                autoWalk=false;
+        if (DetectPlayer())
+        {
+            dangerDetected=true;
+            autoWalk=false;
+            if(isFacingRight){
                 flip();
                 isFacingRight=false;
-                speed=0;
             }
-            else
-            {
-                Walk();
-            }
+            speed=0;
         }
+
+        if(autoWalk){
+            Walk();
+        }
+        
+        if(currentHealth<=0){
+            dangerDetected=false;
+        }
+
+        print(currentHealth);
 
     }
 
@@ -108,21 +125,27 @@ public class Salim_lvl4 : MonoBehaviour
         Invoke("stopPlayer", duration);
     }
 
-    //To hit Layla
-    public void stopPlayer()
-    {
-        enableHitting();
-        Invoke("disableHitting", hittingDuration);
-    }
-
     void enableHitting(){
         isHitting=true;
-        anim.SetBool("hit", isHitting);
+
     }
     void disableHitting(){
         isHitting=false;
-        anim.SetBool("hit", isHitting);
-        FindObjectOfType<Player>().getStapped();
-        hasHit=true;
+    }
+
+
+    void ShootAtPlayer(){
+        if(dangerDetected && !FindObjectOfType<Player>().isInStealth()){
+            enableHitting();
+            Instantiate(bullet, firepoint.position, firepoint.rotation);
+            Invoke("disableHitting", hittingDuration);
+        }
+    }
+
+    public void getHit(){
+        currentHealth-=10;
+    }
+    void RespawnSalim(){
+        currentHealth=maxHealth;
     }
 }

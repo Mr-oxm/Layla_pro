@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float speed;
+    public float bulletLifetime = 10f; // Lifetime of the bullet in seconds
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class BulletController : MonoBehaviour
             speed = -speed;
             transform.localScale = new Vector3(-(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+        // Start the destroy timer
+        StartCoroutine(DestroyAfterDelay());
     }
 
     // Update is called once per frame
@@ -29,8 +33,14 @@ public class BulletController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            Destroy(other.gameObject);
             Destroy(this.gameObject);
+            FindObjectOfType<Salim_lvl4>().getHit();
         }
     }
+    IEnumerator DestroyAfterDelay()
+    {
+        yield return new WaitForSeconds(bulletLifetime);
+        Destroy(this.gameObject);
+    }
+    
 }
