@@ -204,7 +204,7 @@ MonoBehaviour:
   isHitting: 0
   hasHit: 0
   hittingDuration: 0.3
-  hittingDelay: 1.5
+  hittingDelay: 3
   bullet: {fileID: 127241740061928115, guid: 0a700b6f0aff62e43b8eaeb2247354cb, type: 3}
   firepoint: {fileID: 420483484149369862}
 --- !u!1 &1102238308
@@ -1103,7 +1103,7 @@ GameObject:
   - component: {fileID: 564700465}
   m_Layer: 0
   m_Name: Salim_lvl4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

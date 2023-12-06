@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7523481627787141869}
   - component: {fileID: 7523481627787141868}
   m_Layer: 0
-  m_Name: Layla_changer
+  m_Name: Aziz_changer
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe91c0c9b8504e64ab42655c7dd133cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choice: 4
+  choice: 5
   index: 0
 --- !u!58 &7523481627787141868
 CircleCollider2D:
