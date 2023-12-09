@@ -69,7 +69,6 @@ public class Salim_lvl4 : MonoBehaviour
             dangerDetected=false;
         }
 
-        print(currentHealth);
 
     }
 
