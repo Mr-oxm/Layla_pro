@@ -9,6 +9,7 @@ public class DoorChanger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             FindObjectOfType<DoorController>().SwitchObjects();
+            Destroy(gameObject);
         }
     }
 }

@@ -10,7 +10,7 @@ public class VillainBulletController : MonoBehaviour
     public float bulletLifetime = 10f; // Lifetime of the bullet in seconds
 
     private Vector2 initialPlayerPosition;
-    public float destroyDistance = 0.1f; // Distance threshold for destroying the bullet
+    public float destroyDistance = 0.5f; // Distance threshold for destroying the bullet
 
 
     // Start is called before the first frame update
@@ -42,6 +42,7 @@ public class VillainBulletController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * speed, direction.y * speed);
 
         // Check if the bullet is close enough to the initial position to destroy it
+        
         if (Vector2.Distance(transform.position, initialPlayerPosition) < destroyDistance)
         {
             Destroy(this.gameObject);

@@ -10,6 +10,12 @@ TagManager:
   - RunningEnemy
   - Fire
   - Enemy
+  - Ground
+  - Spawnpoint
+  - DadTarget
+  - Stairs
+  - Dad
+  - Mom
   layers:
   - Default
   - TransparentFX
@@ -17,10 +23,10 @@ TagManager:
   - ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Parents
+  - Family
+  - Triggers
+  - Stairs
   - 
   - 
   - 
