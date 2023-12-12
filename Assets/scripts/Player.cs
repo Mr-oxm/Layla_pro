@@ -450,6 +450,6 @@ public class Player : MonoBehaviour
         paused=true;
     }
     public void resumePlayer(){
-        paused=true;
+        paused=false;
     }
 }
