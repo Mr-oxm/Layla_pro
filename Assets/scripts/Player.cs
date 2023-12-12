@@ -64,6 +64,8 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     public Transform firepoint;
 
+    private bool paused=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,35 +77,37 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-    
-        UpdateAnimations();
+        if(!paused){
 
-        if (isAutoWalk)
-        {
-            AutoWalk();
-        }
+            UpdateAnimations();
 
-        if (isHitting)
-        {
-            HandleHitting();
-        }
+            if (isAutoWalk)
+            {
+                AutoWalk();
+            }
 
-        if (isStabbed)
-        {
-            // Handle stabbed logic if needed
-        }
+            if (isHitting)
+            {
+                HandleHitting();
+            }
 
-        
-        
-        if (!isChecking && !isAutoWalk && !isRuningTo && !isStabbed)
-        {
-            HandleSprint();
-            HandleCrouch();
-            HandleJump();
-            HandleMovement();
-            HandleSoundEffects();
-            HandleStealth();
-            HandleHittingInput();
+            if (isStabbed)
+            {
+                // Handle stabbed logic if needed
+            }
+
+            
+            
+            if (!isChecking && !isAutoWalk && !isRuningTo && !isStabbed)
+            {
+                HandleSprint();
+                HandleCrouch();
+                HandleJump();
+                HandleMovement();
+                HandleSoundEffects();
+                HandleStealth();
+                HandleHittingInput();
+            }
         }
     }
 
@@ -440,5 +444,12 @@ public class Player : MonoBehaviour
 
     void Shoot(){
         Instantiate(bullet, firepoint.position, firepoint.rotation);
+    }
+
+    public void pausePlayer(){
+        paused=true;
+    }
+    public void resumePlayer(){
+        paused=true;
     }
 }
