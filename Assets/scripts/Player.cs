@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     private bool isInCrouchMode = false;
     private bool isColidingWithStealth = false;
-    private bool isAutoWalk = true;
+    public bool isAutoWalk = true;
     private bool isChecking = false;
     private bool isRuningTo = false;
     private bool isStabbed = false;
