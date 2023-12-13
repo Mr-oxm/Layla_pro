@@ -1,24 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
     public GameObject CurrentCheckpoint;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public virtual void RespawnPlayer()
     {
-        FindObjectOfType<Player>().transform.position = CurrentCheckpoint.transform.position;
-        FindObjectOfType<EnemyAI>().RespawnEnemy();
+        foreach (var p in FindObjectsOfType<Player>())
+            p.transform.position = CurrentCheckpoint.transform.position;
+        
+        foreach (var criminal in FindObjectsOfType<EnemyAI>())
+            criminal.RespawnEnemy();
     }
 }

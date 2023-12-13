@@ -18,9 +18,10 @@ public class level2_2Manager : MonoBehaviour
     }
     public void RespawnPlayer()
     {
-        FindObjectOfType<PlatformDestruction>().RespawnPlatform();
         FindObjectOfType<Layla_crawling>().transform.position = CurrentCheckpoint.transform.position;
         FindObjectOfType<Layla_crawling>().transform.rotation = CurrentCheckpoint.transform.rotation;
+        foreach (var obstacle in FindObjectsOfType<PlatformDestruction>())
+            obstacle.RespawnPlatform();
         
     }
 }

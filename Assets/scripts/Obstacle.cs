@@ -24,7 +24,8 @@ public class Obstacle : MonoBehaviour
         }
 
         if(other.tag == "RunningEnemy" && gameObject.tag == "Fire"){
-            FindObjectOfType<EnemyAI>().RespawnEnemy();
+            foreach (var criminal in FindObjectsOfType<EnemyAI>())
+                criminal.RespawnEnemy();
         }
     }
 }

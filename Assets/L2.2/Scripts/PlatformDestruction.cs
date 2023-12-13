@@ -7,17 +7,25 @@ public class PlatformDestruction : MonoBehaviour
     public float duration = 3f;
 
     private Animator anim;
-    private bool Shaking = false;
+    [SerializeField] private bool Shaking = false;
+    private BoxCollider2D bc;
+    private SpriteRenderer sp;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        
+        bc=GetComponent<BoxCollider2D>();
+        sp= GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         anim.SetBool("Shake", Shaking);
+        // if(!Shaking){
+        //      // Enable the SpriteRenderer and BoxCollider
+        //     GetComponent<SpriteRenderer>().enabled = true;
+        //     GetComponent<BoxCollider2D>().enabled = true;
+        // }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,25 +34,25 @@ public class PlatformDestruction : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Shaking = true;
-            anim.SetBool("Shake", Shaking);
-            Invoke("CrumblePlatform", duration);
+            StartCoroutine(CrumblePlatformWithDelay());
         }
     }
 
-    private void CrumblePlatform()
+    IEnumerator CrumblePlatformWithDelay()
     {
-        // Disable the SpriteRenderer and BoxCollider
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(duration);
 
+        if(Shaking){
+            sp.enabled = false;
+            bc.enabled = false;
+        }
     }
 
     public void RespawnPlatform()
     {
         Shaking = false;
-        // Enable the SpriteRenderer and BoxCollider
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<BoxCollider2D>().enabled = true;
+        sp.enabled = true;
+        bc.enabled = true;
     }
 
 }
