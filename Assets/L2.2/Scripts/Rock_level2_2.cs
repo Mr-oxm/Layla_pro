@@ -1,33 +1,36 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-    public class Rock_level2_2 : MonoBehaviour
+public class Rock_level2_2 : MonoBehaviour
     {
         [Header("Rock Properties")]
-        [SerializeField] List<Sprite> sprites;
-        [SerializeField] float destoryAfter = 3f;
+        [SerializeField] private List<Sprite> sprites;
+        [SerializeField] private float destroyAfter = 3f;
 
-        SpriteRenderer spriteRenderer;
-        bool onGround = false;
+        private RockManager_level2_2 rockManager;
+        private SpriteRenderer spriteRenderer;
+        private bool onGround;
 
-        void Start()
+        private void Start()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = sprites[UnityEngine.Random.Range(0, sprites.Count)];
+            spriteRenderer.sprite = sprites[Random.Range(0, sprites.Count)];
 
-            Invoke("DestroySelf", destoryAfter);
+            Invoke("DestroySelf", destroyAfter);
         }
 
-        void DestroySelf()
+        private void DestroySelf()
         {
             Destroy(gameObject);
-            FindObjectOfType<RockManager_level2_2>().RockDestroyed();
+            rockManager.RockDestroyed();
         }
 
-        void OnCollisionEnter2D(Collision2D other)
+        public void SetManager( RockManager_level2_2 manager)
+        { 
+            rockManager = manager;
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
         {
             if (onGround) return;
 
@@ -39,4 +42,3 @@ using UnityEngine;
             }
         }
     }
-

@@ -220,7 +220,6 @@ public class EnemyAI : MonoBehaviour
     public void RespawnEnemy(){
         transform.position = points[1].position;
         if(hasChangeVision){
-            print("working");
             enemyVision.position = originalEmptyPosition;
         }
         hasChangeVision=false;

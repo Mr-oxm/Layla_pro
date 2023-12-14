@@ -16,6 +16,7 @@ TagManager:
   - Stairs
   - Dad
   - Mom
+  - Window
   layers:
   - Default
   - TransparentFX

@@ -33,8 +33,13 @@ public class BulletController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            Destroy(this.gameObject);
             FindObjectOfType<Salim_lvl4>().getHit();
+            Destroy(this.gameObject);
+        }
+        if (other.tag == "Window")
+        {
+            FindObjectOfType<Window>().getDamage();
+            Destroy(this.gameObject);
         }
     }
     IEnumerator DestroyAfterDelay()
