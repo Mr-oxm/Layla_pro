@@ -5,11 +5,18 @@ public class AudioChanger : MonoBehaviour
     public int choice; // "bgMusic", "bgEffectsOne", "bgEffectsTwo", "layla", "bgEffectsThree", "Aziz", "Salim", "Dad", "Mom"
     public int index; // Index of the audio clip
 
+    public float delay=0f;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            Invoke("callAction", delay);
+        }
+    }
+
+    void callAction(){
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
 
             if (audioManager != null)
             {
@@ -55,6 +62,6 @@ public class AudioChanger : MonoBehaviour
             {
                 Debug.LogError("AudioManager not found in the scene");
             }
-        }
     }
+
 }

@@ -15,6 +15,8 @@ public class Pickable_object : MonoBehaviour
             FindObjectOfType<Player>().ShowKnife = true;
             if(choice==1){
                 FindObjectOfType<Player>().hasGun = true;
+            }else if(choice==2){
+                FindObjectOfType<Player>().ShowStabingKnife = true;
             }
             // Destroy the current GameObject
             Destroy(gameObject);

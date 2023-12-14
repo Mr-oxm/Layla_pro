@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
 
     void HandleCrouch()
     {
-        if (Input.GetKey(Crouch) && (Input.GetKey(R) || Input.GetKey(L)) && Input.GetKey(Sprint))
+        if (Input.GetKey(Crouch) && (Input.GetKey(R) || Input.GetKey(L)) && Input.GetKey(Sprint) && grounded)
         {
             isInCrouchMode = true;
             sprintSound.Stop();

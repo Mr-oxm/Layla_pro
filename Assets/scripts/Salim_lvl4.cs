@@ -11,7 +11,7 @@ public class Salim_lvl4 : MonoBehaviour
     //Running Speed of movement
     public float runningSpeed;
 
-    private bool isFacingRight = true;
+    [SerializeField] private bool isFacingRight = true;
     
     // private bool isDead=false;
 
@@ -34,6 +34,7 @@ public class Salim_lvl4 : MonoBehaviour
     private float maxHealth=100;
     private float currentHealth;
 
+    public GameObject anas;
 
     void Start()
     {
@@ -52,7 +53,6 @@ public class Salim_lvl4 : MonoBehaviour
         
         if (DetectPlayer())
         {
-            dangerDetected=true;
             autoWalk=false;
             if(isFacingRight){
                 flip();
@@ -66,7 +66,7 @@ public class Salim_lvl4 : MonoBehaviour
         }
         
         if(currentHealth<=0){
-            dangerDetected=false;
+            disableDangerDetected();
         }
 
 
@@ -89,14 +89,7 @@ public class Salim_lvl4 : MonoBehaviour
 
     void Walk()
     {
-        if (this.isFacingRight == true)
-        {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, this.GetComponent<Rigidbody2D>().velocity.y);
-        }
-        else
-        {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(-(speed), this.GetComponent<Rigidbody2D>().velocity.y);
-        }
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, this.GetComponent<Rigidbody2D>().velocity.y);
     }
 
     void flip()
@@ -146,5 +139,28 @@ public class Salim_lvl4 : MonoBehaviour
     }
     void RespawnSalim(){
         currentHealth=maxHealth;
+    }
+
+    public void enableDangerDetected(){
+        dangerDetected=true;
+        FindObjectOfType<Lvl4Manager>().startFinalFight();
+    }
+    public void disableDangerDetected(){
+        dangerDetected=false;
+        FindObjectOfType<Lvl4Manager>().startScene();
+    }
+
+    public void fallToDeath(){
+        anim.SetBool("Shaking", true);
+        Invoke("Die", 7);
+    }
+    public void Die(){
+        anas.SetActive(false);
+        FindObjectOfType<Lvl4Manager>().showAnas();
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, this.GetComponent<Rigidbody2D>().velocity.y);
+        autoWalk=true;
+        speed=5;
+        Walk();
+        Destroy(gameObject,10);
     }
 }

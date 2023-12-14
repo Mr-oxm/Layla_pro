@@ -8,6 +8,10 @@ public class Lvl4Manager : LevelManager
     [SerializeField] private GameObject rocksManagers;
     [SerializeField] private GameObject hideOut;
     [SerializeField] private GameObject light;
+    [SerializeField] private GameObject battleField;
+    [SerializeField] private GameObject npcs;
+    [SerializeField] private GameObject afterMath;
+    [SerializeField] private GameObject anas;
     private Animator hideOutAnimator;
 
     void Start()
@@ -31,6 +35,9 @@ public class Lvl4Manager : LevelManager
         shaking = true;
         rocksManagers.SetActive(true);
         SetChildAnimatorsEnabled(light.transform, shaking);
+        battleField.SetActive(false);
+        npcs.SetActive(false);
+        FindObjectOfType<Salim_lvl4>().fallToDeath();
     }
     
 
@@ -48,4 +55,18 @@ public class Lvl4Manager : LevelManager
             SetChildAnimatorsEnabled(child, enabled);
         }
     }
+
+    public void startFinalFight(){
+        battleField.SetActive(true);
+    }
+
+    public void startScene(){
+        afterMath.SetActive(true);
+    }
+
+    public void showAnas(){
+        anas.SetActive(true);
+    }
+
+
 }

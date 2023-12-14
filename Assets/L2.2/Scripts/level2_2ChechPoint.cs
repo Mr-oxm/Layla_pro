@@ -19,8 +19,7 @@ public class level2_2ChechPoint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            FindObjectOfType<level2_2Manager>().CurrentCheckpoint = this.gameObject;
-           
+            FindObjectOfType<LevelManager>().CurrentCheckpoint = this.gameObject;
         }
     }
 }

@@ -32,7 +32,7 @@ using UnityEngine;
             if (onGround) return;
 
             if (other.gameObject.CompareTag("Player"))
-                FindObjectOfType<level2_2Manager>().RespawnPlayer();
+                FindObjectOfType<LevelManager>().RespawnPlayer();
             else if (other.gameObject.layer == LayerMask.NameToLayer("ground"))
             {
                 onGround = true;
