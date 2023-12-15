@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Window : MonoBehaviour
 {
     [SerializeField] private float hits=3;
@@ -18,6 +18,7 @@ public class Window : MonoBehaviour
         }
         if(triggered&& broken){
             if(!FindObjectOfType<Player>().grounded){
+                SceneManager.LoadScene(13);
                 print("Game end");
             }
         }

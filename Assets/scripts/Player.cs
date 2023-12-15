@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     public Transform firepoint;
 
     private bool paused=false;
+    public GameObject levelTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -439,7 +440,7 @@ public class Player : MonoBehaviour
         isInCrouchMode=true;
         ShowKnife=false;
         ShowStabingKnife=true;
-        
+        finishLevel();
     }
 
     void Shoot(){
@@ -451,5 +452,9 @@ public class Player : MonoBehaviour
     }
     public void resumePlayer(){
         paused=false;
+    }
+
+    public void finishLevel(){
+            levelTrigger.SetActive(true);
     }
 }

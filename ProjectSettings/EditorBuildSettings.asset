@@ -6,6 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Levels/Main Menu.unity
+    guid: 9074cb39c4544984789ae9b4d76918a0
+  - enabled: 1
+    path: Assets/Levels/Cutscenes/Cutscene 1.unity
+    guid: 76b039c3caabc6342b5d3d70c62398ad
+  - enabled: 1
     path: Assets/Levels/Level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Levels/Cutscenes/Cutscene 2.unity
+    guid: 81faf6da130573f4987e3dde27bea084
+  - enabled: 1
+    path: Assets/Levels/Level 2.1.unity
+    guid: d6d391ad7055a4394b5ac825753e20a8
+  - enabled: 1
+    path: Assets/Levels/Cutscenes/Cutscene 3.unity
+    guid: 7a319402523dea54c88c26903be66e9b
+  - enabled: 1
+    path: Assets/Levels/level 2.2.unity
+    guid: 4eb88e9eaaecf5c438bdafad515fda36
+  - enabled: 1
+    path: Assets/Levels/Cutscenes/Cutscene 4.unity
+    guid: b8a0b5fad040d4f46a5d2771eb684ef8
+  - enabled: 1
+    path: Assets/Levels/Cutscenes/Cutscene 5.unity
+    guid: 64e5c6275d364f947be8d79b9fca9118
+  - enabled: 1
+    path: Assets/Levels/Level 3.unity
+    guid: 180889d4ea295814a9bc50ce69b04ee5
+  - enabled: 1
+    path: Assets/Levels/Level 3.2.unity
+    guid: 31eeba413f0678c408905cb6a2cae497
+  - enabled: 1
+    path: Assets/Levels/Cutscenes/Cutscene 6.unity
+    guid: ffbc8a89b062fe843a3227b26d5fac6b
+  - enabled: 1
+    path: Assets/Levels/Level 4.unity
+    guid: 37ca703be32d9ad4cb01db5ffeb5b72a
+  - enabled: 1
+    path: Assets/Levels/Cutscenes/Cutscene 7.unity
+    guid: 1c61fba9d6713924388919bfae985bc5
   m_configObjects: {}

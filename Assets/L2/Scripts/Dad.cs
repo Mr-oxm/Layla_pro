@@ -7,6 +7,7 @@ namespace L2.Scripts
     {
         [SerializeField] GameObject targetPoint;
         [SerializeField] float speed = 2F;
+        [SerializeField] GameObject additionalObject;
 
         private Rigidbody2D rigidbody;
         private Animator animator;
@@ -24,7 +25,8 @@ namespace L2.Scripts
             if (isTriggered && !reachedTargetPoint)
                 MoveToTarget();
 
-            if (targetPoint.transform.position.x >= transform.position.x)
+            
+            if (Vector2.Distance(targetPoint.transform.position, transform.position) < 5f)
                 ReachedTargetPoint();
         }
 
@@ -47,10 +49,12 @@ namespace L2.Scripts
         public void GoDaddyGo()
         {
             isTriggered = true;
+            
         }
         
         private void ReachedTargetPoint()
         {
+            additionalObject.SetActive(true);
             reachedTargetPoint = true;
             rigidbody.velocity = Vector2.zero;
             animator.SetFloat("Speed", 0);
