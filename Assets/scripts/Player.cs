@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float health=100f;
     public float moveSpeed;
     public float runningSpeed;
     public float normalSpeed;
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         moveSpeed = normalSpeed;
+        
     }
 
     // Update is called once per frame
@@ -457,4 +459,6 @@ public class Player : MonoBehaviour
     public void finishLevel(){
             levelTrigger.SetActive(true);
     }
+
+    
 }

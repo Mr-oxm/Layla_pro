@@ -35,7 +35,7 @@ public class Rock_level2_2 : MonoBehaviour
             if (onGround) return;
 
             if (other.gameObject.CompareTag("Player"))
-                FindObjectOfType<LevelManager>().RespawnPlayer();
+                FindObjectOfType<PlayerStats>().TakeDamage();
             else if (other.gameObject.layer == LayerMask.NameToLayer("ground"))
             {
                 onGround = true;

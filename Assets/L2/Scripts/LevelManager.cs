@@ -10,7 +10,7 @@ namespace L2.Scripts
         Stairs
     };
 
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : global::LevelManager
     {
         [SerializeField] GameObject stairs;
         [SerializeField] GameObject defaultSpawnPoint;
@@ -24,6 +24,7 @@ namespace L2.Scripts
         {
             dad = FindObjectOfType<Dad>();
             currentSpawnPoint = defaultSpawnPoint.transform;
+            base.CurrentCheckpoint= defaultSpawnPoint;
             FindObjectOfType<Player>().disableAutoWalk();
             currentLocationName = LocationName.Bedroom;
         }

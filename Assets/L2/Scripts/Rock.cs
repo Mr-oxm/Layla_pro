@@ -33,7 +33,7 @@ namespace L2.Scripts
             if (onGround) return;
 
             if (other.gameObject.CompareTag("Player"))
-                FindObjectOfType<LevelManager>().RespawnPlayer();
+                FindObjectOfType<PlayerStats>().TakeDamage();
             else if (other.gameObject.CompareTag("Ground"))
                 onGround = true;
         }

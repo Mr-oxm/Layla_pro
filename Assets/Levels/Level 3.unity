@@ -6261,12 +6261,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b652441f0f3bddf4cb54be99c52f6b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   moveSpeed: 0
   runningSpeed: 6
   normalSpeed: 3
   jumpHeight: 7
   isFacingRight: 0
-  Spacebar: 119
+  Spacebar: 32
   L: 97
   R: 100
   Sprint: 304

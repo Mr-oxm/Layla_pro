@@ -504,6 +504,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548241250831940814, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548241250831940814, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1631792933215167687, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
       propertyPath: m_Name
       value: UI
@@ -11249,6 +11257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 247454993407035354, guid: d1195be2ef192074796b8e4555e470d0, type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1140343231045942667, guid: d1195be2ef192074796b8e4555e470d0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99891436

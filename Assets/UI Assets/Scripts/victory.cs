@@ -30,7 +30,9 @@ public class victory : MonoBehaviour
         PauseScreen.SetActive(true);
         Paused = true;
         Time.timeScale = 0;
-        FindObjectOfType<Player>().pausePlayer();
+        if(FindObjectOfType<Player>()!=null){
+            FindObjectOfType<Player>().pausePlayer();
+        }
     }
 
     public void Resume()
@@ -38,7 +40,9 @@ public class victory : MonoBehaviour
         PauseScreen.SetActive(false);
         Paused = false;
         Time.timeScale = 1;
-        FindObjectOfType<Player>().resumePlayer();
+        if(FindObjectOfType<Player>()!=null){
+            FindObjectOfType<Player>().resumePlayer();
+        }
     }
     public void beVisible(){
         show=true;
