@@ -15,7 +15,8 @@ public class Popup : MonoBehaviour
     void Start()
     {
         Paused = false;
-        PauseScreen.SetActive(false);
+        if(PauseScreen!=null)
+            PauseScreen.SetActive(false);
         show=false;
     }
 
