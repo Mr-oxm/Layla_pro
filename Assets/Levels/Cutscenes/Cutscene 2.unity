@@ -456,6 +456,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 155534235127834421, guid: 191bba19f7283ee4e8bc7a73a3cef27c, type: 3}
   m_PrefabInstance: {fileID: 416237471}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &490020461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: delayBeforeStart
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: At that moment, as I was lying down,
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: the memories of the past invaded my mind.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252922646223503259, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_Name
+      value: CutsceneUI
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
 --- !u!1001 &529526918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567,6 +640,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneNumber: 4
   delay: 20
+  byKey: 0
+  triggered: 0
+  enterKey: 0
 --- !u!61 &795318831
 BoxCollider2D:
   m_ObjectHideFlags: 0

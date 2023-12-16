@@ -25,16 +25,20 @@ public class Salim_lvl4 : MonoBehaviour
     public bool hasHit = false;
     public float hittingDuration=0.5f;
     public float hittingDelay=0.5f;
-    private bool dangerDetected=false;
+    public bool dangerDetected=false;
 
     //bullet
     public GameObject bullet;
     public Transform firepoint;
 
-    private float maxHealth=100;
+    public float maxHealth=100;
     private float currentHealth;
+    public float damage=20;
 
     public GameObject anas;
+    public GameObject SalimBar;
+
+
 
     void Start()
     {
@@ -135,15 +139,21 @@ public class Salim_lvl4 : MonoBehaviour
     }
 
     public void getHit(){
-        currentHealth-=10;
+        currentHealth-=damage;
+        FindObjectOfType<SalimHealthBar>().SetHealth(currentHealth);
     }
-    void RespawnSalim(){
+    public void RespawnSalim(){
         currentHealth=maxHealth;
+        FindObjectOfType<SalimHealthBar>().SetMaxHealth(maxHealth);
     }
 
     public void enableDangerDetected(){
-        dangerDetected=true;
-        FindObjectOfType<Lvl4Manager>().startFinalFight();
+        if(!dangerDetected){
+            dangerDetected=true;
+            SalimBar.SetActive(true);
+            FindObjectOfType<SalimHealthBar>().SetMaxHealth(maxHealth);
+            FindObjectOfType<Lvl4Manager>().startFinalFight();
+        }
     }
     public void disableDangerDetected(){
         dangerDetected=false;
@@ -155,6 +165,7 @@ public class Salim_lvl4 : MonoBehaviour
         Invoke("Die", 7);
     }
     public void Die(){
+        SalimBar.SetActive(false);
         anas.SetActive(false);
         FindObjectOfType<Lvl4Manager>().showAnas();
         this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, this.GetComponent<Rigidbody2D>().velocity.y);

@@ -3865,7 +3865,7 @@ GameObject:
   - component: {fileID: 954436954}
   - component: {fileID: 954436953}
   - component: {fileID: 954436955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: door_closed_police (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5787,7 +5787,7 @@ GameObject:
   - component: {fileID: 1609956561}
   - component: {fileID: 1609956560}
   - component: {fileID: 1609956562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: door_closed_police
   m_TagString: Untagged
   m_Icon: {fileID: 0}

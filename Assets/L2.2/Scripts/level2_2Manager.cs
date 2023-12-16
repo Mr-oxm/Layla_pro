@@ -16,6 +16,7 @@ public class level2_2Manager : LevelManager
     }
     public override void RespawnPlayer()
     {
+        FindObjectOfType<ScoreController>().increaseScore();
         FindObjectOfType<Layla_crawling>().transform.position = CurrentCheckpoint.transform.position;
         FindObjectOfType<Layla_crawling>().transform.rotation = CurrentCheckpoint.transform.rotation;
         foreach (var obstacle in FindObjectsOfType<PlatformDestruction>())

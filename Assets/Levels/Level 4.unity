@@ -3375,7 +3375,10 @@ MonoBehaviour:
   hittingDelay: 3
   bullet: {fileID: 127241740061928115, guid: 0a700b6f0aff62e43b8eaeb2247354cb, type: 3}
   firepoint: {fileID: 420483484149369862}
+  maxHealth: 100
+  damage: 5
   anas: {fileID: 420483484468613329}
+  SalimBar: {fileID: 2138985184}
 --- !u!1 &575900376
 GameObject:
   m_ObjectHideFlags: 0
@@ -13080,9 +13083,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548241250831940814, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548241250831940814, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1631792933215167687, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167053602889735423, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167053602889735423, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8501679883244479576, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
       propertyPath: m_RootOrder
@@ -14130,6 +14149,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2138985184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 66999119408444730, guid: 1265b075f2538db4397273b01cf9b3a4, type: 3}
+  m_PrefabInstance: {fileID: 1939128000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &77620631104599482
 SpriteRenderer:
   m_ObjectHideFlags: 0

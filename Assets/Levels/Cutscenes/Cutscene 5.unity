@@ -506,6 +506,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneNumber: 9
   delay: 42
+  byKey: 0
+  triggered: 0
+  enterKey: 0
 --- !u!61 &77196892
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2494,6 +2497,117 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &2047754320
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283814662025707268, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: typingSpeed
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: delayBeforeStart
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: I can breathe! I am still alive!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: "Oh my god! The knife hit Anas\u2019 milk bottle. It saved my life!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[2]
+      value: It must have been in my coat.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[3]
+      value: "Somehow he saved my life, my heart, and my soul, but I couldn\u2019t
+        save him!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[4]
+      value: Hey, you there, are you OK?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[5]
+      value: "Layla, is that you! Oh my god, it\u2019s been a long time."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[6]
+      value: My brother, they took him. Please, help me!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[7]
+      value: 'Oh no! They attacked this village too. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[8]
+      value: 'There is a police station in the next village. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539415561826776184, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: sentences.Array.data[9]
+      value: "Come with me and let\u2019s report the crime before we lose trace of
+        the gang."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252922646223503259, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
+      propertyPath: m_Name
+      value: CutsceneUI
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f46ba0cedbc06a448d8072333cf00cb, type: 3}
 --- !u!114 &38093604923182437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12993,7 +13107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2910494434994948027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.9399996, y: 3.7870002, z: 10}
+  m_LocalPosition: {x: 4.9399996, y: 3.03, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

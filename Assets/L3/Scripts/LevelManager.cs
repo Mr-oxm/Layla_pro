@@ -40,6 +40,7 @@ namespace L3.Scripts
         
         public override void RespawnPlayer()
         {
+            FindObjectOfType<ScoreController>().increaseScore();
             foreach (var p in FindObjectsOfType<Player>())
                 p.transform.position = CurrentCheckpoint.transform.position;
 

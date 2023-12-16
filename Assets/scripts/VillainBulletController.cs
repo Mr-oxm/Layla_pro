@@ -55,7 +55,7 @@ public class VillainBulletController : MonoBehaviour
         {
             // Handle player hit, e.g., reduce health
             Destroy(this.gameObject);
-            FindObjectOfType<LevelManager>().RespawnPlayer();
+            FindObjectOfType<PlayerStats>().TakeDamage();
         }
     }
     IEnumerator DestroyAfterDelay()

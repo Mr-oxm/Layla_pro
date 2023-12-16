@@ -7,6 +7,8 @@ public class SalimLvl4ForCutscene : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private float animationDelay;
     [SerializeField] private bool isMoving=false;
+    
+
     private Animator anim;
     void Start()
     {

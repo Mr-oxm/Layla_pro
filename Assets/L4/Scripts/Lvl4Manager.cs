@@ -27,7 +27,9 @@ public class Lvl4Manager : LevelManager
 
     public override void RespawnPlayer()
     {
+        FindObjectOfType<ScoreController>().increaseScore();
         FindObjectOfType<Player>().transform.position = CurrentCheckpoint.transform.position;
+        FindObjectOfType<Salim_lvl4>().RespawnSalim();
     }
 
     public void enableShaking()

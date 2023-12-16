@@ -33,7 +33,8 @@ public class BulletController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            FindObjectOfType<Salim_lvl4>().getHit();
+            if(FindObjectOfType<Salim_lvl4>().dangerDetected)
+                FindObjectOfType<Salim_lvl4>().getHit();
             Destroy(this.gameObject);
         }
         if (other.tag == "Window")

@@ -42,6 +42,7 @@ namespace L2.Scripts
         
         public void RespawnPlayer()
         {
+            FindObjectOfType<ScoreController>().increaseScore();
             FindObjectOfType<Player>().transform.position = currentSpawnPoint.position;
         }
 

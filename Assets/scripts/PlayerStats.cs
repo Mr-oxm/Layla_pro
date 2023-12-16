@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     private float immunityTime = 0f;
     public float immunityDuration = 1.5f;
 
+    public GameObject excludedChild;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +65,7 @@ public class PlayerStats : MonoBehaviour
 
             // Flicker for child objects
             foreach (var childRenderer in childSpriteRenderers){
-                 if (childRenderer.gameObject.activeSelf) // Check if the child object is active
+                if (childRenderer.gameObject.activeSelf && childRenderer.gameObject != excludedChild) // Check if the child object is active
                 {
                     childRenderer.enabled = !childRenderer.enabled;
                 }

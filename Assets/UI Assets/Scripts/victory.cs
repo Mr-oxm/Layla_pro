@@ -12,7 +12,8 @@ public class victory : MonoBehaviour
     void Start()
     {
         Paused = false;
-        PauseScreen.SetActive(false);
+        if(PauseScreen!=null)
+            PauseScreen.SetActive(false);
         show=false;
     }
 
