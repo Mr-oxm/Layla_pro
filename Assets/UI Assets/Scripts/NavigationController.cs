@@ -7,6 +7,7 @@ public class NavigationController : MonoBehaviour
 {
     public void mainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
     public void GoCutScene1(){

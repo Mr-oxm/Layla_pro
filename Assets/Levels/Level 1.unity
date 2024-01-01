@@ -9891,8 +9891,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: 29ad052120adc2a40bc91d2b23b052fe, type: 3}
-  - {fileID: 8300000, guid: 19d40319ff73ab942a18de0bba47b1fc, type: 3}
   - {fileID: 8300000, guid: b4b1dfcbccaa55c41943fc1eb20e7353, type: 3}
   - {fileID: 8300000, guid: acde39aad0eea904bb6b9a74faf5c0d0, type: 3}
   totalDuration: 0
@@ -21118,7 +21116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30adc5c3d3e639a42b1cfd71ad1ff97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Press [Q] to enter stealth mode. Press [Q]+[A] OR [Q]+[D]
+  text: 'er stealth mode. Press [Q]+[A] OR [Q]+[D]]+[A] OR [Q]+[D] to exit. '
   delay: 0
   byKey: 0
   triggered: 0

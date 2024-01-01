@@ -21,11 +21,6 @@ public class PlatformDestruction : MonoBehaviour
     void Update()
     {
         anim.SetBool("Shake", Shaking);
-        // if(!Shaking){
-        //      // Enable the SpriteRenderer and BoxCollider
-        //     GetComponent<SpriteRenderer>().enabled = true;
-        //     GetComponent<BoxCollider2D>().enabled = true;
-        // }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
